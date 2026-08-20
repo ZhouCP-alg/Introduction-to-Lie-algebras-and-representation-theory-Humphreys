@@ -1,0 +1,365 @@
+\chapter{Basic Concepts}
+\section{Definitions and first examples}
+
+
+\begin{definition}
+    A vector space $L$ over a field $F$, with an operation $L \times L \to L$, denoted $(x,y)\to [x,y]$ and called the \textbf{bracket} or \textbf{commutator} of $x$ and $y$, is called a \textbf{Lie algebra} over $F$ if the following axioms are satisfied for any $x,y,z \in L$:
+    \begin{enumerate}[label=L\arabic*]
+        \item The bracket operation is bilinear.
+        \item $[x,x]=0$.
+        \item $[x[yz]]+[y[zx]]+[z[xy]]=0$.
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    $L3$ is called the \textbf{Jacobi identity}. Note that $L1$ and $L2$ imply anticommutativity: $[xy]=-[yx]$. Conversely the anticommutativity will imply $L2$ if $\ch F \neq 2$.
+\end{remark}
+
+\begin{definition}
+    A subspace $K$ of a Lie algebra $L$ is called a \textbf{subalgebra} if $[xy] \in K$ whenever $x,y \in K$. In particular, $K$ is a Lie algebra in its own right relative to the inherited operations. 
+\end{definition}
+
+\begin{definition}
+    $V$ is a finite dimensional vector space over a field $F$, denote by $\End V$ the set of linear transformation $V\to V$. Define a new operation $[x,y]=xy-yx$, called the \textbf{bracket} of $x$ and $y$. With this operation $\End V$ becomes a Lie algebra. Write $\mathfrak{gl}(V)$ for $\End V$ viewed as a Lie algebra and call it \textbf{general linear algebra}. Any subalgebra of a Lie algebra $\mathfrak{gl}(V)$ is called a \textbf{linear Lie algebra}.
+\end{definition}
+
+Here are four families $A_l, B_l, C_l, D_l$ of Lie algebras and they are called the \textbf{classical algebras}. For $B_l$ and $D_l$, let $\ch F \neq 2$.
+
+\begin{example}
+    $A_l$: Let $\operatorname{dim} V=l+1$. Denote $\mathfrak{sl}(V)$ or $\mathfrak{sl}(l+1,F)$ the set of endomorphisms of $V$ having trace zero. Easy to see $\mathfrak{sl}(V)$ is a subalgebra of $\mathfrak{gl}(V)$ since $\operatorname{Tr}(xy)=\operatorname{Tr}(yx)$ and $\operatorname{Tr}(x+y)=\operatorname{Tr}(x)+\operatorname{Tr}(y)$, we call $\mathfrak{sl}(V)$ the \textbf{special linear algebra}.
+
+    $B_l$: Let $\operatorname{dim} V= 2l+1$ be odd and take $f$ to be the nondegenerate symmetric bilinear form on $V$ whose matrix is $s=\begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 0 & I_l \\
+        0 & I_l & 0 \\
+    \end{pmatrix}$. The \textbf{orthogonal algebra} $\mathfrak{o}(V)$, or $\mathfrak{o}(2l+1,F)$, consists of all endomorphisms $x$ of $V$ satisfying $f(x(v),w)=-f(v,x(w))$.
+
+    $C_l$: Let $\operatorname{dim} V=2l$ and define a nondegenerate skew-symmetric form $f$ on $V$ by the matrix $s=\begin{pmatrix}
+        0 & I_l \\
+        -I_l & 0 \\
+    \end{pmatrix}$. Denote by $\mathfrak{sp}(V)$ or $\mathfrak{sp}(2l,F)$ the \textbf{symplectic algebra} which consists of all endomorphisms $x$ of $V$ satisfying $f(x(v),w)=-f(v,x(w))$.
+
+    $D_l$: Let $\operatorname{dim} V=2l$ be even and take $f$ to be the nondegenerate symmetric bilinear form on $V$ whose matrix is $s=\begin{pmatrix}
+        0 & I_l \\
+        I_l & 0 \\
+    \end{pmatrix}$. $D_l$ is also an \textbf{orthogonal algebra} whose construction is identical to that for $B_l$.
+\end{example}
+
+\begin{definition}
+    If $H,K$ are subalgebras of $L$, $[H,K]$ denotes the subspace of $L$ spanned by commutators $[x,y], x \in H,y \in K$. 
+\end{definition}
+
+\begin{example}
+    Let $\mathfrak{t}(n,F)$ be the set of \textbf{upper triangular matrices} $a_{ij}$ with $a_{ij}=0$ if $i>j$, $\mathfrak{n}(n,F)$ the set of \textbf{strictly upper triangular matrices} with $a_{ij}=0$ if $i\geqslant j$ and $\mathfrak{d}(n,F)$ the set of \textbf{diagonal matrices}. Note that $\mathfrak{t}(n,F)=\mathfrak{n}(n,F)+\mathfrak{d}(n,F)$ (vector space direct sum) with $[\mathfrak{d}(n,F),\mathfrak{n}(n,F)]=\mathfrak{n}(n,F)$, hence $[\mathfrak{t}(n,F),\mathfrak{t}(n,F)]=\mathfrak{n}(n,F)$.
+\end{example}
+
+\begin{definition}
+    By an \textbf{$F$-algebra} (not necessarily associative) we simply mean a vector space $\mathfrak{U}$ over $F$ endowed with a bilinear operation $\mathfrak{U}\times \mathfrak{U}\to \mathfrak{U}$. By a \textbf{derivation} of $\mathfrak{U}$ we mean a map $\delta:\mathfrak{U} \to \mathfrak{U}$ satisfying the product rule $\delta(ab)=a\delta(b) +\delta(a)b$. Easily the collection $\Der \mathfrak{U}$ of all derivations of $\mathfrak{U}$ is a vector space of $\End \mathfrak{U}$ and it is also easy to verify the bracket $[\delta, \delta']$ of two derivations is again a derivation. Thus $\Der \mathfrak{U}$ is a subalgebra of $\mathfrak{gl} (\mathfrak{U})$.
+\end{definition}
+
+Since a Lie algebra $L$ is an $F$-algebra, $\Der L$ is defined: $x \in L, y\mapsto [x,y]$. This is obviously an endomorphism which we denote $\ad_x$. We can rewrite the Jacobi identity in the form $[x[yz]]=[[xy]z]+[y[xz]]$, then $\ad_x \in \Der L$. Derivations of this form are called \textbf{inner}, all others \textbf{outer}. The map $L\to \Der L$ sending $x$ to $\ad_x$ is called the \textbf{adjoint representation} of $L$.
+
+
+\section{Ideals and homomorphisms}
+\begin{definition}
+    A subspace $I$ of a Lie algebra $L$ is called an \textbf{ideal} of $L$ if $x \in L, y \in I$ together imply $[xy] \in I$.
+\end{definition}
+$Z(L)=\{ z \in L \mid [xz]=0\text{ for all }x \in L  \}$ is called the \textbf{center} of $L$. Clearly the center of $L$ is an ideal of $L$.
+
+If $I,J$ are two ideals of a Lie algebra $L$, then $I+J=\{ x+y \mid x \in I, y \in J \}$ and $[IJ]=\{ \sum x_{i}y_{i} \mid x_{i}\in I,y_{i} \in J  \}$ are both ideals. Particularly, $[LL]$ is called the \textbf{derived algebra} of $L$.
+
+\begin{definition}
+    If $L$ has no ideals except itself and 0, and if moreover $[LL]\neq 0$, then we call $L$ \textbf{simple}.
+\end{definition}
+
+\begin{proposition}
+    $L$ simple implies $Z(L)=0$ and $[LL]=L$.
+\end{proposition}
+\begin{proof}
+    Since $Z(L)$ and $[LL]$ are both ideals of $L$ and $L$ is simple, then the proposition holds.
+\end{proof}
+
+\begin{example}
+    Let $L=\mathfrak{sl}(2,F),\ch F\neq 2$. Take as standard basis for $L$ the three matrices: $x=\begin{pmatrix}
+        0 & 1 \\
+        0 & 0 \\
+    \end{pmatrix},y=\begin{pmatrix}
+        0 & 0 \\
+        1 & 0 \\
+    \end{pmatrix},h=\begin{pmatrix}
+        1 & 0 \\
+        0 & -1 \\
+    \end{pmatrix}$. Then we have $[xy]=h,[hx]=2x,[hy]=-2y$.(Notice that $x,y,h$ are eigenvectors for $\ad_h$, corresponding to the eigenvalues $2,-2,0$. Since $\ch F\neq 2$, these egienvalues are distinct.) If $I\neq 0$ is an ideal of $L$, let $ax+by+ch$ be an arbitrary nonzero element of $I$. Applying $\ad_x$ twice then we get $-2bx \in I$, and applying $\ad_y$ twice we get $-2ay \in I$. Therefore if $a$ or $b$ is nonzero, $I$ contains either $y$ or $x$ and then, $I=L$ clearly. If $a=b=0$, then $0\neq ch \in I$, so $h \in I$, and again $I=L$ since $I$ is an ideal. We conclude that $L=\mathfrak{sl}(2,F)$ is simple.
+\end{example}
+
+The construction of a \textbf{quotient algebra} $L/I$ is formally the same as the construction of a quotient ring. Its Lie multiplication is defined by $[x+I,y+I]=[xy]+I$.
+
+\begin{definition}
+    The \textbf{normalizer} of a subalgebra (or just subspace) $K$ of $L$ is defined by $N_L(K)=\{ x\in L \mid [xK]\subseteq K \}$. Clearly $N_L(K)$ is a subalgebra of $L$ by Jacobi identity. If $K=N_L(K)$, we call $K$ \textbf{self-normalizing}.
+
+    The \textbf{centralizer} of a subset $X$ of $L$ is $C_L(X)=\{ x\in L \mid [xX]=0 \}$. Again by Jacobi identity $C_L(X)$ is a subalgebra of $L$.
+\end{definition}
+
+\begin{definition}
+    A linear transformation $\phi:L\to L'$ is called a \textbf{homomorphism} if $\phi([xy])=[\phi(x)\phi(y)]$, for all $x,y \in L$. $\phi$ is called a \textbf{monomorphism} if $\operatorname{ker} \phi=0$, an \textbf{epimorphism} if $\operatorname{Im} \phi=L'$, an \textbf{isomorphism} if it is both mono- and epi-. 
+\end{definition}
+
+\begin{proposition}
+(a) If $\phi : L \to L'$ is a homomorphism of Lie algebras, then $L/\operatorname{ker} \phi \simeq \operatorname{Im} \phi$. If $I$ is any ideal of $L$ included in $\operatorname{ker} \phi$, there exists a unique homomorphism $\psi : L/I \to L'$ making the following diagram commute ($\pi = \text{canonical map}$):
+\[
+\begin{tikzcd}
+L \arrow[r, "\phi"] \arrow[dr, "\pi"'] & L' \\
+& L/I \arrow[u, "\psi"']
+\end{tikzcd}
+\]
+
+(b) If $I$ and $J$ are ideals of $L$ such that $I \subset J$, then $J/I$ is an ideal of $L/I$ and $(L/I)/(J/I)$ is naturally isomorphic to $L/J$.
+
+(c) If $I, J$ are ideals of $L$, there is a natural isomorphism between $(I+J)/J$ and $I/(I \cap J)$. 
+\end{proposition}
+\begin{remark}
+    Notice that this is actually the isomorphism theorem. The first isomorphism theorem is replaced by the universal property and the category should be $\{(X,\alpha)\}$ where $X$ is a Lie algebra and $\alpha$ is a morphism whose kernel contains $I$.
+\end{remark}
+
+\begin{definition}
+    A \textbf{representation} of a Lie algebra is the homomorphism $\phi:L\to \mathfrak{gl}(V)$ with $V$ the vector space over $F$.
+\end{definition}
+\begin{remark}
+    The only important example is the adjoint representation $\ad:L\to \mathfrak{gl}(L)$ ($\ad:L\to \Der(L)$ in fact). It preserves the bracket since 
+    $$\begin{aligned}
+    \relax [\ad_x,\ad_y](z) &=\ad_x\ad_y(z)-\ad_y\ad_x(z)=\ad_x([yz])-\ad_y([xz]) \\ 
+    &=[x[yz]]-[y[xz]]=[[xy]z]+[y[xz]]-[y[xz]]\\
+    &=[[xy]z]=\ad_{xy}(z).
+    \end{aligned}$$
+\end{remark}
+
+\begin{proposition}
+    Any simple Lie algebra is isomorphic to a linear Lie algebra.
+\end{proposition}
+\begin{proof}
+    Note that the kernel of $\ad$ is the elements in $L$ which commute with $L$, that is, $x \in Z(L)$. Hence if $Z(L)=0$, there is $L\simeq \ad(L) \subseteq \mathfrak{gl}(L)$.
+\end{proof}
+
+\begin{definition}
+    An \textbf{automorphism} of $L$ is an isomorphism of $L$ onto itself, denoted as $\Aut L$.
+\end{definition}
+
+\begin{definition}
+    Let $L$ be a Lie algebra over $F$ with $\ch F=0$. For $x\in L$, we call $\ad_x$ \textbf{nilpotent} if $(\ad_x)^k=0$ for some $k>0$. Then the usual exponential power series makes sense over $F$ and $\mathrm{e} ^{\ad_x}=1+\ad_x+\frac{1}{2!}(\ad_x)^2+ \cdots+\frac{1}{(k-1)!}(\ad_x)^{k-1}$.
+\end{definition}
+\begin{remark}
+    In fact, the $\ad_x$ can be replaced by any nilpotent derivation $\delta$ of $L$ and then we have $\mathrm{e}^{\delta}(x) \mathrm{e}^{\delta}(y)=\mathrm{e}^{\delta}(xy)$. (Use Leibniz rule and Cauchy product to prove.)
+\end{remark}
+
+\begin{proposition}
+    The $\mathrm{e}^{\delta}$ mentioned above is invertible.
+\end{proposition}
+\begin{proof}
+    Note that $\mathrm{e}^{\delta}=1+\delta+\frac{1}{2!}\delta^2+ \cdots +\frac{1}{(k-1)!}\delta^{k-1}$. Then let $\mathrm{e}^{\delta}=1+\eta$, $\eta=\delta(1+\frac{1}{2!}\delta+ \cdots +\frac{1}{(k-1)!}\delta^{k-2})$. Therefore $\eta^k=\delta^k (1+\frac{1}{2!}\delta+ \cdots +\frac{1}{(k-1)!}\delta^{k-2})^k=0$ (commutative).
+
+    Hence $(1+\eta)(1-\eta+\eta^2- \cdots +(-1)^{k-1}\eta^{k-1})=1+(-1)^{k-1}\eta^k=1$ and $\mathrm{e}^{\delta}$ is invertible.
+\end{proof}
+
+\begin{definition}
+    An automorphism of the form $\mathrm{e}^{\ad_x}$, $\ad_x$ nilpotent, is called \textbf{inner}. The subgroup generated by these is denoted $\Int L$ and its elements are called inner automorphisms.
+\end{definition}
+
+\begin{proposition}
+    Prove: $\Int L \vartriangleleft \Aut L$.
+\end{proposition}
+\begin{proof}
+    Take $\mathrm{e}^{\ad_x} \in \Int L$ and $\phi \in \Aut L$, then 
+    \begin{equation*}
+        \begin{aligned}
+        \phi \mathrm{e}^{\ad_x} \phi^{-1}(y) &= \phi (1+\ad_x+\frac{1}{2!}(\ad_x)^2+ \cdots +\frac{1}{(k-1)!}(\ad_x)^{k-1})\phi^{-1}(y) \\
+        &= (1+\phi \ad_x\phi^{-1}+ \cdots  \frac{1}{(k-1)!} \phi (ad_x)^{k-1} \phi^{-1})(y) \quad (\phi \ad_x \phi^{-1}=\ad_{\phi(x)}) \\
+        &= \mathrm{e}^{\ad_{\phi(x)}}(y) \in \Int L.
+        \end{aligned}
+    \end{equation*}
+    Therefore $\Int L \vartriangleleft \Aut L$.
+\end{proof}
+
+\begin{proposition}
+    If $L \subseteq \mathfrak{gl}(V)$ is an arbitrary linear Lie algebra with $\ch F =0 $ and $x\in L$ is nilpotent, then 
+    \begin{equation*}
+        \mathrm{e}^x y (\mathrm{e}^x)^{-1} = \mathrm{e}^{\ad_x} (y) \text{ for all } y \in L.
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Since $x$ is nilpotent, we have 
+    \begin{equation*}
+        (\text{ad}_x)^m = (\lambda_x - \rho_x)^m = \sum_{i=0}^m (-1)^{m-i} \binom{m}{i} (\lambda_x)^i (\rho_x)^{m-i}
+    \end{equation*}
+    where $\lambda_x, \rho_x$ denote left and right multiplication by $x$ in the ring $\End V$. Clearly $\lambda_x$ and $\rho_x$ are nilpotent and then we take $m=2k$ where $x^k=0$ for some $k>0$. That is, 
+    \begin{equation*}
+        (\text{ad}_x)^{2k} = \sum_{i=0}^{2k} (-1)^{2k-i} \binom{2k}{i} (\lambda_x)^i (\rho_x)^{2k-i}=0
+    \end{equation*}
+    since $\lambda_x^k=\rho_x^k=0$. Then 
+    \begin{equation*}
+        \mathrm{e}^{\ad_x}=\mathrm{e}^{\lambda_x-\rho_x}=\mathrm{e}^{\lambda_x}\mathrm{e}^{-\rho_x}=\lambda_{\mathrm{e}^x}\rho_{\mathrm{e}^{(-x)}}.
+    \end{equation*}
+\end{proof}
+
+\section{Solvable and nilpotent Lie algebras}
+In this section and later of the book, the Lie algebra $L$ is always considered as finite dimensional and $\ch F=0$.
+
+\begin{definition}
+    The sequence of ideals of $L$ defined by $L^{(0)}=L, L^{(1)}=[LL], L^{(2)}=[L^{(1)}L^{(1)}], \ldots, L^{(i)}=[L^{i-1}L^{i-1}]$ is called the \textbf{derived series}. If $L^{(k)}=0$ for some $k \in \mathbb{Z}^{+}$, then we call $L $ \textbf{solvable}.
+\end{definition}
+\begin{example}
+    Notice that if $L=\mathfrak{t}(n,F)$, then it is easy to show that $L^{(1)}=\mathfrak{n}(n,F)$. For the standard basis $e_{ij}$ in $\mathfrak{n}(n,F)$, we say $j-i$ the "level" of $e_{ij}$. Note that $[e_{ij},e_{jk}]=e_{ik}$ and $(j-i)+(k-j)=k-i$, which implies each $e_{ik}$ is commutator of two matrices whose levels add up to that of $e_{ik}$ since $[e_{ij},e_{kl}]=0$ if $j\neq k$. Hence we conclude that $L^{(2)}$ is spanned by those $e_{ik}$ of level $\geqslant 2$. By induction the level of $L^{(i)}$ should $\geqslant 2^{i-1}$. Finally it is clear that $L^{k}=0$ whenever $2^{k-1}>n-1$.
+\end{example}
+
+\begin{proposition}
+    Let $L$ be a Lie algebra.
+
+    (a) If $L$ is solvable, then so are all subalgebras and homomorphic images of $L$.
+
+    (b) If $I$ is a solvable ideal of $L$ such that $L/I$ is solvable, then $L$ itself is solvable.
+
+    (c) If $I,J$ are solvable ideals of $L$, then so is $I+J$.
+\end{proposition}
+\begin{proof}
+    (a) Let $K$ be a subalgebra of $L$, then $K^{(i)} \subseteq L^{(i)}$. Thus $K$ is solvable. Note that $\phi [LL]\phi^{-1}=[\phi(L),\phi(L)]=\phi(L)^{(1)}$ with $\phi$ a homomorphism. 
+
+    (b) $(L/I)^{k}=0$ for some $k$ since $L/I$ is solvable. Then $L^{(k)}\subseteq I$ thus $L^{(k+1)}=0$.
+
+    (c) Since $(I+J)/J \simeq I/(I \cap J)$ and clearly $I \cap J$ is solvable, $(I+J)/J$ is solvable. Thus by (b) $I+J$ is solvable.
+\end{proof}
+
+\begin{definition}
+    The unique maximal solvable ideal is called the \textbf{radical} of $L$ and denoted $\Rad L$. If $\Rad L =0$, $L $ is called \textbf{semisimple}.
+\end{definition}
+\begin{remark}
+    First we should show the existence of the maximal solvable ideal. Note that our discussions are all under the condition that $L$ has finite dimensions. (If $L$ has infinite dimensions, then the maximal solvable ideal may not exist.) Thus the existence of maximal solvable ideal is easy to check. The uniqueness is also easy to see since by the proposition above $S+I$ is also a solvable ideal containing $S$ when $I$ is a solvable ideal.
+\end{remark}
+\begin{example}
+    For arbitrary $L$, $L/\Rad L$ is semisimple. For any solvable nonzero ideal $I+\Rad L$ of $L/\Rad L$, by isomorphism theorem the inverse image of $I+\Rad L$ in $L$ contains $\Rad L$ thus must be $L$. Therefore $L/\Rad L$ is semisimple.
+\end{example}
+
+\begin{definition}
+    Define a sequence of ideals of $L$ (the \textbf{descending central series} or \textbf{lower central series}) by $L^0=L, L^1=[LL], L^2=[LL^1], \ldots,L^k=[LL^{k-1}]$. $L$ is called \textbf{nilpotent} if $L^k=0$ for some $k$. 
+\end{definition}
+\begin{example}
+    Obviously, $L^{(i)} \subseteq L^i$ hence nilpotent algebras are solvable. But the converse is false. Let $L=\mathfrak{t}(n,F)$, then $L$ is solvable. However $L^2=[LL^1]=[\mathfrak{t}(n,F),\mathfrak{n}(n,F)]=\mathfrak{n}(n,F)$ and by induction $L^i=\mathfrak{n}(n,F)$. Thus $L$ is not nilpotent. On the other hand, $L=\mathfrak{n}(n,F)$ is nilpotent since $L^1$ is spanned by those basis whose level $\geqslant 2$, $L^2$ by those of level $\geqslant 3, \ldots, M^i$ by those of level $\geqslant i+1$.
+\end{example}
+
+\begin{proposition}
+    Let $L$ be a Lie algebra.
+
+    (a) If $L$ is nilpotent, then so are all subalgebras and homomorphic images of $L$.
+    
+    (b) If $L/Z(L)$ is nilpotent, then so is $L$. 
+
+    (c) If $L$ is nilpotent and nonzero, then $Z(L)\neq 0$.
+\end{proposition}
+\begin{proof}
+(a) Similarly to the proof of Proposition 1.7(a).
+
+(b) $(L/Z(L))^k=0$ implies $L^k \subseteq Z(L)$. Thus $L^{k+1}=[LL^k]\subseteq [L,Z(L)]=0$.
+
+(c) $L^k=[LL^{k-1}]=0$ thus $L^{k-1} \subseteq Z(L)$. In fact, $L^{k-1}=Z(L)$.
+\end{proof}
+
+The condition for $L$ to be nilpotent can be rephrased as follows:
+\begin{definition}
+    For some $n$ which only depends on $L$, $\ad_{x_{1}}\ad_{x_{2}}\cdots\ad_{x_{n}}(y)=0$ for all $x_{i}, y \in L$. In particular, $(\ad_x)^n=0$ for all $x\in L$.
+
+    Let $L$ be a Lie algebra and $x\in L$, then we call $x$ \textbf{ad-nilpotent} if $\ad_x$ is a nilpotent endomorphism.
+\end{definition}
+\begin{remark}
+    This means that if $L$ is nilpotent, then all elements of $L$ are ad-nilpotent. The converse state is also true, namely Engel Theorem.
+\end{remark}
+
+Before we prove Engel theorem, we need some lemmas.
+\begin{lemma}
+    Let $x \in \mathfrak{gl}(V)$ be a nilpotent endomorphism. Then $\ad_x$ is also nilpotent.
+\end{lemma}
+\begin{proof}
+    This has been proven in the Proposition 1.6.
+\end{proof}
+
+\begin{theorem}
+    Let $V$ be a nonzero finite-dimensional vector space, and let $L$ be a subalgebra of $\mathfrak{gl}(V)$. If every element of $L$ is nilpotent, then there exists a nonzero vector $v\in V$ such that $L.v=0$.
+\end{theorem}
+\begin{proof}
+    We proceed by induction on $\operatorname{dim}L$. The cases $\operatorname{dim}L=0$ and $\operatorname{dim}L=1$ are immediate. Assume that $\operatorname{dim}L>1$ and that the result holds for Lie algebras of smaller dimension. The idea is to reduce the problem to a proper subalgebra $K$ of $L$. By induction, we can find nonzero vectors annihilated by $K$; we then try to find one among these vectors which is also annihilated by the remaining part of $L$. To make this reduction work, we shall choose $K$ so that it is an ideal of codimension one.
+
+    We first consider an arbitrary proper subalgebra $K$ of $L$. For every $x\in K$, Lemma 1.1 shows that $\ad_x$ is nilpotent. Since $K$ is stable under $\ad_x$, the transformation $\ad_x$ induces a nilpotent transformation on $L/K$. These induced transformations form a Lie subalgebra of $\mathfrak{gl}(L/K)$ whose dimension is at most $\operatorname{dim}K<\operatorname{dim}L$. Therefore, the induction hypothesis gives a nonzero coset $y+K\in L/K$ such that
+    \[
+        \ad K.(y+K)=0.
+    \]
+    Equivalently, $[Ky]\subseteq K$. Thus $y\in N_L(K)$ but $y\notin K$, and hence
+    \[
+        K\subsetneq N_L(K).
+    \]
+    Notice that this does not yet show that an arbitrary $K$ is an ideal. We now choose $K$ to be a maximal proper subalgebra of $L$, which is possible because $L$ is finite dimensional. Since $N_L(K)$ is a subalgebra strictly containing $K$, the maximality of $K$ implies that $N_L(K)=L$. Therefore $K$ is an ideal of $L$.
+
+    We now want to separate the part $K$, which can be handled by induction, from the remaining part of $L$. We do not need a decomposition into ideals; a vector-space complement of $K$ will be enough. First we show that $L/K$ is one dimensional. Since $K$ is an ideal, the subalgebras of $L/K$ correspond to the subalgebras of $L$ containing $K$. If $\operatorname{dim}L/K>1$, then any one-dimensional subspace of $L/K$ is a nonzero proper subalgebra, and its inverse image in $L$ is a proper subalgebra strictly containing $K$. This contradicts the maximality of $K$. Hence
+    \[
+        \operatorname{dim}L/K=1.
+    \]
+    Choose $z\in L-K$. We then have the vector-space decomposition
+    \[
+        L=K\oplus Fz.
+    \]
+
+    By induction, there exists a nonzero vector annihilated by $K$. However, this particular vector need not be annihilated by $z$, so it is natural to consider the whole space
+    \[
+        W=\{v\in V\mid K.v=0\}.
+    \]
+    We know that $W\neq 0$. If $z$ stabilizes $W$, then the restriction of $z$ to $W$ is nilpotent, and we can choose a nonzero vector in $W$ which is also annihilated by $z$. It therefore remains to verify that $z.W\subseteq W$.
+
+    Let $y\in K$ and $w\in W$. Since $K$ is an ideal of $L$, we have $[yz]\in K$, and hence
+    \[
+        y.(z.w)=yz.w=(zy+[yz]).w=z.(y.w)+[yz].w=0.
+    \]
+    Thus $z.w\in W$, which proves that $z.W\subseteq W$. Since the restriction of $z$ to the nonzero space $W$ is nilpotent, there exists a nonzero $v\in W$ such that $z.v=0$. Now $K.v=0$ and $L=K\oplus Fz$, so $L.v=0$.
+\end{proof}
+
+\begin{theorem}[Engel]
+    If all elements of $L$ are ad-nilpotent, then $L$ is nilpotent.
+\end{theorem}
+\begin{proof}
+    It is obvious while $\operatorname{dim}L=0\text{ or } 1$. Assume $\operatorname{dim}L>1$. $\ad L$ is nilpotent since all elements of $L$ are ad-nilpotent. Then by Theorem 1.1 there exists a $0\neq x\in L$ s.t. $[L,x]=0$, i.e., $x \in Z(L)$. Then by induction $L/Z(L)$ is nilpotent. Thus by Proposition 1.8, $L$ is nilpotent.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

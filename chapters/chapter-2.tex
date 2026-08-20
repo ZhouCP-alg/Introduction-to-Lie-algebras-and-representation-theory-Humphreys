@@ -1,0 +1,107 @@
+\chapter{Semisimple Lie Algebras}
+\section{Theorems of Lie and Cartan}
+In the later chapters we always assume the field $F$ has characteristic $0$ and is algebraically closed, except where otherwise specified.
+
+\begin{theorem}
+    Let $L$ be a solvable subalgebra of $\mathfrak{gl}(V)$, $V$ finite dimensional. Then $V$ contains a common eigenvector for all the endomorphisms.
+\end{theorem}
+\begin{proof}
+    The idea to prove this theorem is similar to the proof of Engel's theorem. Clearly when $\operatorname{dim} L=0$ or $1$, the theorem holds. Since $L$ is solvable, $[LL]$ must be a proper ideal of $L$. Consider $L/[LL]$ which is abelian, any subalgebras of $L/[LL]$ should also be an ideal. Take a subspace of codimension $1$ in $L/[LL]$ and let its inverse image be $K$. Then $K$ is an ideal of codimension $1$ in $L$.
+
+    Next we need to focus on the ideal $K$. Since $K$ is solvable and $\operatorname{dim}K<\operatorname{dim}L$, by induction, there is a $v \in V$ s.t. $v$ is a common eigenvector of $K$. Let $W=\{ v \in V \mid x.v=\lambda(x)v, \forall x \in K  \}$ where $\lambda$ is some fixed linear function from $K$ to $F$, then $W\neq 0$. If $L.W \subseteq W$, then $z$ stabilizes $W$, where $L=K\oplus Fz$. Since $F$ is algebraically closed, $z|_W$ has an eigenvector in $W$, which is then a common eigenvector of $L$.
+
+    Let $w \in W, x \in L$, then $\forall y \in K$, we need to prove $y.(x.w)=\lambda(y) (x.w)$. Note that 
+    \begin{equation*}
+        y.(x.w)=yx.w=xy.w-[xy].w=\lambda(y)x.w-\lambda([xy])w,
+    \end{equation*}
+    since $K$ is an ideal of $L$ and $[xy] \in K$. If $\lambda([xy])=0$, then we complete the proof.
+
+    This consequence is kind of diffcult to prove since we know nothing about the linear function $\lambda$ although it is fixed. However, equaling to zero and the form of $[xy]=xy-yx$ give us a hint: Since $\operatorname{Tr}([xy])=0$, can we construct a subspace such that all the diagonal elements of the matrix of $[xy]$ restricted to this subspace are $\lambda([xy])$. Then take trace we get the multiplication of the dimension of the subspace and $\lambda([xy])$ is zero, and then $\lambda([xy])$ is zero since $\ch F=0$.
+
+    The most direct idea is to take $W'=W$, on which $[xy]$ acts as the scalar $\lambda([xy])$, and then take the trace. The problem is that although $[xy]$ and $y$ stabilize the subspace $W'=W$, $x$ may not stabilize it, while this fact is definitely the same fact that we need to prove ($x \in L$ stabilizes $W$). For example, take 
+    \begin{equation*}
+        X=\begin{pmatrix}
+            0 & 1 \\
+            0 & 0 \\
+        \end{pmatrix},       \quad      Y=\begin{pmatrix}
+            0 & 0 \\
+            1 & 0 \\
+        \end{pmatrix},
+    \end{equation*}
+    then $$[XY]=\begin{pmatrix}
+        1 & 0 \\
+        0 & -1 \\
+    \end{pmatrix}.$$ Obviously $[XY]$ stabilizes the subspace $Fe_{1}$ and $\operatorname{Tr}_{Fe_{1}}([XY])=1$. However, in the whole space we have $\operatorname{Tr}([XY])=0$. The reason is that $Y(e_{1})=e_{2}\notin Fe_{1}$, so $Y|_{Fe_{1}}$ is not an endomorphism of $Fe_{1}$ and thus $$[XY]|_{Fe_{1}}\neq [X|_{Fe_{1}},Y|_{Fe_{1}}],$$ which means $[XY]$ stabilizing a subspace $\nRightarrow \operatorname{Tr}_{\text{subspace}}([XY])=0$. 
+
+    Until now, we have the intuition that the main problem is to find a subspace which $x\in L$ stabilizes. Hence consider $$\{w,x.w,x^2.w, \ldots,x^n.w\}$$ where $0\neq w \in W$ and $n$ is the smallest integer to ensure that these vectors are linearly dependent. Then let $$W_{i}=\operatorname{span} \{w,x.w, \ldots,x^{i-1}.w\}$$. We have $\operatorname{dim}W_{i}=i$ for $1\leq i\leq n$ and $W_{n}=W_{n+j}$ for all $j>0$. And we now have a good consequence that $x.W_{n}\subseteq W_{n}$ and $x.W_{i} \subseteq W_{i+1}$ for $i<n$. The only problem is whether $y\in K$ stabilizes $W_{n}$.
+    
+    Note that, by simultaneous induction on $i$ for all $y\in K$,
+    \begin{equation*}
+        \begin{aligned}
+        y.w&=\lambda(y)w, \\
+        y.(x.w)&=\lambda(y)x.w-\lambda([xy])w \equiv \lambda(y)x.w \quad (\text{mod } W_{1}), \\
+        y.(x^2.w)&=x.y.(x.w)-[xy].(x.w) \equiv \lambda(y)x^2.w \quad (\text{mod } W_{2}), \\
+        &\vdots \\
+        y.(x^i.w)&=x.y.(x^{i-1}.w)-[xy].(x^{i-1}.w) \equiv \lambda(y)x^i.w \quad (\text{mod } W_{i}),\\
+        &\vdots
+        \end{aligned}
+    \end{equation*}
+    where we use $[xy]\in K$ and apply the induction hypothesis to $[xy]$ as well. This means $y$ stabilizes $W_{n}$ and the matrix of $y$ under the basis $\{w,x.w, \ldots,x^{n-1}.w\}$ is upper triangular whose diagnoal elements are all $\lambda(y)$. Since both $x$ and $y$ stabilize $W_n$, we have
+    \[
+        [xy]|_{W_n}=[x|_{W_n},y|_{W_n}],
+    \]
+    and hence $\operatorname{Tr}_{W_n}([xy])=0$. Notice that $y$ is arbitrary in $K$ and $[xy] \in K$, thus $\operatorname{Tr}_{W_{n}}([xy])=n\lambda([xy])=0$, which implies $\lambda([xy])=0$. Therefore the previous computation shows that $L.W\subseteq W$, and the proof is complete.
+\end{proof}
+\begin{remark}
+    From the proof, we can easily weaken the assumption $\ch F=0$. Indeed, the only place where characteristic zero is used is at the very end, when we deduce $\lambda([xy])=0$ from $n\lambda([xy])=0$. Thus, one simple sufficient condition is that $\ch F=p$ and $\operatorname{dim}V<p$. Also easily we can get the theorem below.
+\end{remark}
+
+\begin{corollary}[Lie]
+    Let $L$ be a solvable subalgebra of $\mathfrak{gl}(V)$, $\operatorname{dim}V=n<\infty$. Then $L$ stabilizes some flag in $V$ (in other words, the matrices of $L$ relative to a suitable basis of $V$ are upper triangular).
+\end{corollary}
+
+Furthermore, let $L$ be any Lie algebra, $\phi:L\to \mathfrak{gl}(V)$ a finite dimensional representation of $L$. Then $\phi(L)$ is solvable, and according to the Lie's theorem it stabilizes a flag. The usual example is $\phi$ is an adjoint representation.
+
+\begin{corollary}
+    Let $L$ be solvable. Then there exists a chain of ideals of $L$, $0=L_{0} \subseteq L_{1} \subseteq \cdots \subseteq L_{n}=L$, such that $\operatorname{dim}L_{i}=i$.
+\end{corollary}
+\begin{proof}
+    Let $\ad:L\to \mathfrak{gl}(L)$ is the adjoint representation of $L$, then a flag stabilized by $\ad(L)$ is actually a chain of ideals of $L$, each of codimension one in the next.
+\end{proof}
+
+\begin{corollary}
+    Let $L$ be solvable. Then $x\in [LL]$ implies $\ad_L x$ is nilpotent. In particular, $[LL]$ is nilpotent.
+\end{corollary}
+\begin{proof}
+    
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

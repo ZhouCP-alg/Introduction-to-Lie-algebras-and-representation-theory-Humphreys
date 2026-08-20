@@ -1,0 +1,24 @@
+## LaTeX 临时文件
+*.aux
+*.log
+*.out
+*.toc
+*.gz
+*.blg
+*.bbl
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+*.vrb
+*.synctex.gz
+*.synctex
+*.thm
+*.bcf
+*.run.xml
+!*.hsnips
+
+## 文件夹/系统文件
+.DS_Store
+Thumbs.db
+node_modules/
